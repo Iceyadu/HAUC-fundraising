@@ -7,19 +7,11 @@ import { DonationStatusActions } from "@/components/admin/donation-status-action
 import { StatusBadge } from "@/components/admin/status-badge";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { formatEtb, PAYMENT_METHODS } from "@/lib/branding";
+import { formatEtb, getPaymentMethodLabel } from "@/lib/branding";
 import { getDonationById } from "@/lib/donations";
 
 interface DonationDetailPageProps {
   params: Promise<{ id: string }>;
-}
-
-function getPaymentMethodLabel(value: string | null): string {
-  if (!value) {
-    return "—";
-  }
-
-  return PAYMENT_METHODS.find((method) => method.value === value)?.label ?? value;
 }
 
 export default async function DonationDetailPage({

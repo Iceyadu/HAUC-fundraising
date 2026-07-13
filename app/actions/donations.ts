@@ -10,6 +10,7 @@ import {
   PAYMENT_METHODS,
 } from "@/lib/branding";
 import { createDonation } from "@/lib/donations";
+import { phoneNumberSchema } from "@/lib/phone-validation";
 import { uploadReceipt, validateReceiptFile } from "@/lib/receipts";
 import { notifyDonationReceived } from "@/lib/telegram";
 
@@ -17,10 +18,7 @@ const paymentMethodValues = PAYMENT_METHODS.map((method) => method.value);
 
 const donationSchema = z.object({
   donorName: z.string().min(1, "Name or group name is required").max(120),
-  donorPhone: z
-    .string()
-    .min(1, "Phone number is required")
-    .max(20, "Enter a valid phone number"),
+  donorPhone: phoneNumberSchema,
   donorEmail: z
     .string()
     .email("Enter a valid email address")

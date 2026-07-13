@@ -43,20 +43,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatEtb, PAYMENT_METHODS } from "@/lib/branding";
+import { formatEtb, getPaymentMethodLabel, PAYMENT_METHODS } from "@/lib/branding";
 import type {
   DonationStatus,
   DonationWithReceipt,
   PaginatedDonations,
 } from "@/types/donation";
 
-function getPaymentMethodLabel(value: string | null): string {
-  if (!value) {
-    return "—";
-  }
-
-  return PAYMENT_METHODS.find((method) => method.value === value)?.label ?? value;
-}
 
 interface DonationsTableProps {
   data: PaginatedDonations;
@@ -179,7 +172,7 @@ export function DonationsTable({ data }: DonationsTableProps) {
           <SelectTrigger>
             <SelectValue placeholder="Payment method" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-72">
             <SelectItem value="all">All methods</SelectItem>
             {PAYMENT_METHODS.map((method) => (
               <SelectItem key={method.value} value={method.value}>

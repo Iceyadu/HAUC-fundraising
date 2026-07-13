@@ -1,4 +1,4 @@
-import { formatEtb, PAYMENT_METHODS } from "@/lib/branding";
+import { formatEtb, getPaymentMethodLabel } from "@/lib/branding";
 import { getReceiptSignedUrl } from "@/lib/receipts";
 import type { Donation } from "@/types/donation";
 
@@ -30,17 +30,10 @@ function escapeHtml(value: string): string {
     .replaceAll(">", "&gt;");
 }
 
-function getPaymentMethodLabel(value: string | null): string {
-  if (!value) {
-    return "—";
-  }
-
-  return PAYMENT_METHODS.find((method) => method.value === value)?.label ?? value;
-}
 
 function buildDonationMessage(donation: Donation): string {
   const lines = [
-    "🏗️ <b>New Builder Contribution</b>",
+    "🏗️ <b>New Participant Contribution</b>",
     "",
     `<b>Name:</b> ${escapeHtml(donation.donor_name)}`,
     `<b>Phone:</b> ${escapeHtml(donation.phone)}`,

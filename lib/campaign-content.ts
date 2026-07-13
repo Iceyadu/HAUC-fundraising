@@ -5,13 +5,13 @@ export const CAMPAIGN_DURATION_DAYS = 52;
 export const CAMPAIGN_BUILDERS_TARGET = 1_000;
 
 export const CAMPAIGN_START = {
-  en: "August 18",
-  am: "ነሐሴ 12",
+  en: "July 14, 2026",
+  am: "ሐምሌ 7, 2018 ዓ.ም.",
 };
 
 export const CAMPAIGN_END = {
-  en: "September 11",
-  am: "መስከረም 1",
+  en: "Saturday, September 5, 2026",
+  am: "ነሐሴ 30",
 };
 
 export const HERO = {
@@ -40,28 +40,28 @@ export const POWER_IN_NUMBERS = {
   subtitleEn: "The 1,000 People Principle",
   subtitleAm: "የ1000 ሰዎች መርህ",
   bodyEn:
-    "Nehemiah chapter 3 reveals a powerful truth: the wall was rebuilt section by section, as families, priests, craftsmen, and leaders each took responsibility for their portion. No one carried the burden alone — the work belonged to the whole community. Our campaign follows that same pattern. When 1,000 builders each contribute 52,000 ETB, we become one united force rebuilding God's house together.",
+    "Nehemiah chapter 3 reveals a powerful truth: the wall was rebuilt section by section, as families, priests, craftsmen, and leaders each took responsibility for their portion. No one carried the burden alone — the work belonged to the whole community. Our campaign follows that same pattern. When 1,000 participants each contribute 52,000 ETB, we become one united force rebuilding God's house together.",
   bodyAm:
-    "የነህምያ ምዕራፍ 3 አንድ ኃይለኛ እውነትን ይገልጻል። ግድግዳው በቤተሰቦች፣ በካህናታትና በመሪዎች በክፍል በክፍል ተሰራ። ምንም አንድ ሰው ብቻውን ሸክሙን አልሸከመም — ሥራው ለሁሉም ማህበረሰብ ነበር። ዘመቻችንም ያንን ቅኝት ይከተላል። 1,000 ተሰሪዎች እያንዳንዱ 52,000 ብር ሲሰጡ አንድ ለአንድ የእግዚአብሔር ቤትን የምንሰራበት ኃይል እንሆናለን።",
+    "የነህምያ ምዕራፍ 3 አንድ ኃይለኛ እውነትን ይገልጻል። ግድግዳው በቤተሰቦች፣ በካህናታትና በመሪዎች በክፍል በክፍል ተሰራ። ምንም አንድ ሰው ብቻውን ሸክሙን አልሸከመም — ሥራው ለሁሉም ማህበረሰብ ነበር። ዘመቻችንም ያንን ቅኝት ይከተላል። 1,000 ተሳታፊዎች እያንዳንዱ 52,000 ብር ሲሰጡ አንድ ለአንድ የእግዚአብሔር ቤትን የምንሰራበት ኃይል እንሆናለን።",
 };
 
 export const THE_MATH = {
   total: "52,000,000 ETB",
   people: "1,000 People",
   each: "52,000 ETB",
-  taglineEn: "Every builder makes the vision possible.",
-  taglineAm: "እያንዳንዱ ተሰሪ ራዕዩን የሚያስቻል ነው።",
+  taglineEn: "Every participant makes the vision possible.",
+  taglineAm: "እያንዳንዱ ተሳታፊ ራዕዩን የሚያስቻል ነው።",
 };
 
 export const PARTICIPATE = {
   titleEn: "How You Can Participate",
   titleAm: "እንዴት መሳተፍ እንደሚችሉ",
-  optionOneTitleEn: "Individual Builder",
-  optionOneTitleAm: "የግል ተሰሪ",
+  optionOneTitleEn: "Individual Participant",
+  optionOneTitleAm: "የግል ተሳታፊ",
   optionOneBodyEn: "Sponsor the full 52,000 ETB.",
   optionOneBodyAm: "ሙሉውን 52,000 ብር ይሸፍኑ።",
-  optionTwoTitleEn: "Twin Builders",
-  optionTwoTitleAm: "የድርብ ተሰሪዎች",
+  optionTwoTitleEn: "Group Participant",
+  optionTwoTitleAm: "የጋራ ተሳታፊዎች",
   optionTwoBodyEn:
     "Partner with a spiritual brother, sister or friend to contribute together.",
   optionTwoBodyAm:
@@ -71,33 +71,41 @@ export const PARTICIPATE = {
 export const DONATION_CTA = {
   titleEn: "Take Action Today",
   titleAm: "ዛሬውኑ ይሳተፉ!",
-  buttonEn: "Become One of the 1,000 Builders",
-  buttonAm: "ከ1,000 ተሰሪዎች አንዱ ይሁኑ",
+  buttonEn: "Become One of the 1,000 Participants",
+  buttonAm: "ከ1,000 ተሳታፊዎች አንዱ ይሁኑ",
 };
 
 export const DONATION_PAGE = {
-  headingEn: "Become a Builder",
-  headingAm: "ተሰሪ ይሁኑ",
+  headingEn: "Become a Participant",
+  headingAm: "ተሳታፊ ይሁኑ",
   subtitleEn:
     "Join the 52-day campaign to build God's house through faithful giving.",
   subtitleAm: "በ52 ቀናት ዘመቻ በእምነት መስጠት የእግዚአብሔር ቤትን ለመገንባት ይቀላቀሉ።",
-  cardTitleEn: "One Builder · One Legacy",
-  cardTitleAm: "አንድ ተሰሪ · አንድ ቅርስ",
-  cardSubtitleEn: "Fixed contribution for every builder in the campaign.",
-  cardSubtitleAm: "ለዘመቻው ውስጥ ለእያንዳንዱ ተሰሪ የተወሰነ መዋጮ ነው።",
+  cardTitleEn: "One Participant · One Legacy",
+  cardTitleAm: "አንድ ተሳታፊ · አንድ ቅርስ",
+  cardSubtitleEn: "Fixed contribution for every participant in the campaign.",
+  cardSubtitleAm: "ለዘመቻው ውስጥ ለእያንዳንዱ ተሳታፊ የተወሰነ መዋጮ ነው።",
+  formTitleEn: "Participant Contribution Form",
+  formTitleAm: "የተሳታፊ መዋጮ ቅጽ",
+  formDescriptionEn:
+    "Record your gift as one of the 1,000 participants in this 52-day campaign.",
+  formDescriptionAm:
+    "መዋጮዎን እንደ ከ1,000 ተሳታፊዎች አንዱ በዚህ 52 ቀናት ዘመቻ ያስመዝግቡ።",
 };
 
 export const PROGRESS = {
   titleEn: "Campaign Progress",
   titleAm: "የዘመቻው ሂደት",
+  publicSubtitleEn: "Together we are moving toward the goal.",
+  publicSubtitleAm: "አንድ ላይ ወደ ግቡ እየተጓዝን ነው።",
   goalEn: "Campaign Goal",
   goalAm: "የዘመቻው ግብ",
   raisedEn: "Amount Raised",
   raisedAm: "የተሰበሰበው",
   remainingEn: "Remaining",
   remainingAm: "የቀረ",
-  buildersEn: "Builders Joined",
-  buildersAm: "የተቀላቀሉ ተሰሪዎች",
+  buildersEn: "Participants Joined",
+  buildersAm: "የተቀላቀሉ ተሳታፊዎች",
 };
 
 export const TIMELINE = {

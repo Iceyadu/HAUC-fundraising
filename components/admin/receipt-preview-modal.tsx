@@ -11,16 +11,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { formatEtb, PAYMENT_METHODS } from "@/lib/branding";
+import { formatEtb, getPaymentMethodLabel } from "@/lib/branding";
 import type { DonationWithReceipt } from "@/types/donation";
-
-function getPaymentMethodLabel(value: string | null): string {
-  if (!value) {
-    return "—";
-  }
-
-  return PAYMENT_METHODS.find((method) => method.value === value)?.label ?? value;
-}
 
 interface ReceiptPreviewModalProps {
   donation: DonationWithReceipt | null;

@@ -31,9 +31,9 @@ const values = [
     titleEn: "Community",
     titleAm: "ህብረት",
     descriptionEn:
-      "This 52-day campaign unites 1,000 builders in shared purpose, fellowship, and service.",
+      "This 52-day campaign unites 1,000 participants in shared purpose, fellowship, and service.",
     descriptionAm:
-      "ይህ 52 ቀናት ዘመቻ 1,000 ተሰሪዎችን በጋራ ግብ፣ በመተዋወቅና በአገልግሎት አንድነት ያደርጋል።",
+      "ይህ 52 ቀናት ዘመቻ 1,000 ተሳታፊዎችን በጋራ ግብ፣ በመተዋወቅና በአገልግሎት አንድነት ያደርጋል።",
     icon: Users,
   },
   {

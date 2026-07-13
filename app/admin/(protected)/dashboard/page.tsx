@@ -70,7 +70,7 @@ export default async function AdminDashboardPage() {
       icon: HandCoins,
     },
     {
-      title: "Number of Builders",
+      title: "Number of Participants",
       value: stats.builderCount.toString(),
       description: "Verified unique contributors",
       icon: Users,
@@ -147,7 +147,7 @@ export default async function AdminDashboardPage() {
       <Card className="border-0 shadow-md">
         <CardHeader>
           <CardTitle>Recent Donations</CardTitle>
-          <CardDescription>Latest submissions from builders.</CardDescription>
+          <CardDescription>Latest submissions from participants.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           {recentDonations.length === 0 ? (

@@ -39,10 +39,10 @@ export default async function DonatePage() {
 
       <Card className="mx-auto mt-12 max-w-xl border-0 shadow-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Builder Contribution Form</CardTitle>
-          <CardDescription>
-            Record your gift as one of the 1,000 builders in this 52-day campaign.
-          </CardDescription>
+          <CardTitle className="text-2xl">{DONATION_PAGE.formTitleEn}</CardTitle>
+          <p className="text-primary text-lg font-medium">{DONATION_PAGE.formTitleAm}</p>
+          <CardDescription>{DONATION_PAGE.formDescriptionEn}</CardDescription>
+          <p className="text-muted-foreground text-sm">{DONATION_PAGE.formDescriptionAm}</p>
         </CardHeader>
         <CardContent>
           <DonationForm campaigns={campaigns} />

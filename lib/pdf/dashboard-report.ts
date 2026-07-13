@@ -70,7 +70,7 @@ export function buildDashboardReportPdf({
       ["Remaining Amount", formatEtb(stats.remainingAmount)],
       ["Progress", `${stats.progressPercent.toFixed(1)}%`],
       ["Number of Donations", String(stats.donationCount)],
-      ["Number of Builders", String(stats.builderCount)],
+      ["Number of Participants", String(stats.builderCount)],
       ["Pending Verification", String(stats.pendingCount)],
       ["Verified Donations", String(stats.verifiedCount)],
       ["Rejected Donations", String(stats.rejectedCount)],

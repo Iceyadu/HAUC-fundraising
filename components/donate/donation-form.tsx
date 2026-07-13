@@ -38,16 +38,14 @@ import {
 } from "@/lib/branding";
 import { DONATION_PAGE } from "@/lib/campaign-content";
 import { compressReceiptImage } from "@/lib/receipt-compression";
+import { phoneNumberSchema } from "@/lib/phone-validation";
 import { validateReceiptFile } from "@/lib/receipt-validation";
 import { cn } from "@/lib/utils";
 import type { Campaign } from "@/types";
 
 const donationFormSchema = z.object({
   donorName: z.string().min(1, "Name or group name is required").max(120),
-  donorPhone: z
-    .string()
-    .min(1, "Phone number is required")
-    .max(20, "Enter a valid phone number"),
+  donorPhone: phoneNumberSchema,
   donorEmail: z
     .string()
     .email("Enter a valid email address")
@@ -188,7 +186,9 @@ export function DonationForm({ campaigns }: DonationFormProps) {
               </p>
             </div>
           </div>
-          <FormDescription>Fixed contribution amount for every builder.</FormDescription>
+          <FormDescription>
+            Fixed contribution amount for every participant.
+          </FormDescription>
         </FormItem>
 
         <FormField
@@ -224,11 +224,14 @@ export function DonationForm({ campaigns }: DonationFormProps) {
                 <Input
                   type="tel"
                   autoComplete="tel"
-                  placeholder="+251 9XX XXX XXX"
+                  placeholder="+251 9XX XXX XXX or +1 (555) 123-4567"
                   disabled={isSubmitting || isCompressing}
                   {...field}
                 />
               </FormControl>
+              <FormDescription>
+                Ethiopian, US, or international format (e.g. 0912345678, +251912345678).
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -260,7 +263,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Payment Method <span className="text-destructive">*</span>
+                Bank / Payment Method <span className="text-destructive">*</span>
               </FormLabel>
               <Select
                 value={field.value}
@@ -269,10 +272,10 @@ export function DonationForm({ campaigns }: DonationFormProps) {
               >
                 <FormControl>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select payment method" />
+                    <SelectValue placeholder="Select bank or payment method" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent>
+                <SelectContent className="max-h-72">
                   {PAYMENT_METHODS.map((method) => (
                     <SelectItem key={method.value} value={method.value}>
                       {method.label}

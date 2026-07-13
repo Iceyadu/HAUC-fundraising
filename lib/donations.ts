@@ -6,6 +6,7 @@ import {
 } from "date-fns";
 
 import { CAMPAIGN_GOAL_ETB } from "@/lib/branding";
+import { normalizePaymentMethodForStorage } from "@/lib/payment-methods";
 import { getReceiptSignedUrl } from "@/lib/receipts";
 import { createServiceClient } from "@/lib/supabase/admin";
 import { throwSupabaseError } from "@/lib/supabase/errors";
@@ -196,7 +197,7 @@ export async function createDonation(input: {
       phone: input.donorPhone,
       email: input.donorEmail,
       amount: input.amount,
-      payment_method: input.paymentMethod,
+      payment_method: normalizePaymentMethodForStorage(input.paymentMethod),
       purpose: input.purpose,
       receipt_path: input.receiptPath,
       message: input.message,
@@ -340,7 +341,10 @@ export async function getDonationsPaginated(
   }
 
   if (params.paymentMethod && params.paymentMethod !== "all") {
-    query = query.eq("payment_method", params.paymentMethod);
+    query = query.eq(
+      "payment_method",
+      normalizePaymentMethodForStorage(params.paymentMethod),
+    );
   }
 
   const dateRangeStart = getDateRangeStart(params.dateRange);

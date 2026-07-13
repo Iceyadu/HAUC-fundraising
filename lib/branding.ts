@@ -20,13 +20,11 @@ export const CONTACT = {
   address: "Addis Ababa, Ethiopia",
 };
 
-export const PAYMENT_METHODS = [
-  { value: "telebirr", label: "Telebirr" },
-  { value: "cbe", label: "CBE" },
-  { value: "dashen", label: "Dashen" },
-  { value: "awash", label: "Awash" },
-  { value: "cash", label: "Cash" },
-] as const;
+export {
+  getPaymentMethodLabel,
+  PAYMENT_METHODS,
+  type PaymentMethodValue,
+} from "@/lib/payment-methods";
 
 export function formatEtb(amount: number) {
   return new Intl.NumberFormat("en-ET", {

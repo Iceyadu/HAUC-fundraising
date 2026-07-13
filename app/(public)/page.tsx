@@ -221,7 +221,7 @@ export default function HomePage() {
 
       <SectionShell>
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <CampaignProgress />
           </div>
         </Container>
