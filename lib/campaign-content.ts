@@ -29,7 +29,7 @@ export const COUNTDOWN = {
   secondsEn: "Seconds",
   secondsAm: "ሰከንዶች",
   untilEn: "until the campaign ends",
-  untilAm: "ዘመቻው እስከመጨረሻው",
+  untilAm: "ዘመቻው የሚያበቃው",
   endedEn: "Campaign Complete",
   endedAm: "ዘመቻው ተጠናቋል",
 };
@@ -51,7 +51,7 @@ export const VISION_GOAL = {
   bodyEn:
     "In the days of Nehemiah, the broken walls were completely rebuilt in just 52 days (Nehemiah 6:15). Following that same pattern of focus and dedication, we are launching a 52-day campaign to raise 50,000,000 ETB.",
   bodyAm:
-    "በነህምያ ዘመን የፈረሱት የቅጥሩ ሥራዎች በ52 ቀናት ብቻ ተጠናቀቁ (ነህምያ 6፥15)። ያንን ያተኮረና የተሰጠ የሥራ ቅኝት በመከተል 50,000,000 ብር ለማሰባሰብ ለ52 ቀናት የሚቆይ ታላቅ ዘመቻ ጀምረናል።",
+    "በነህምያ ዘመን የፈረሰው የኢየሩሳሌም ቅጥር መልሶ የመገንባት ሥራ በ52 ቀናት ውስጥ ብቻ ተጠናቀቀ (ነህምያ 6፥15)። ያንን ታላቅ ትጋትና የዓላማ ጽናት አርዓያ በማድረግ፣ 50 ሚሊዮን ብር ለማሰባሰብ ለ52 ቀናት የሚቆይ ታላቅ የገቢ ማሰባሰቢያ ዘመቻ ጀምረናል።",
 };
 
 export const POWER_IN_NUMBERS = {
@@ -62,7 +62,7 @@ export const POWER_IN_NUMBERS = {
   bodyEn:
     "Nehemiah chapter 3 reveals a powerful truth: the wall was rebuilt section by section, as families, priests, craftsmen, and leaders each took responsibility for their portion. No one carried the burden alone — the work belonged to the whole community. Our campaign follows that same pattern. When 1,000 participants each contribute 50,000 ETB, we become one united force rebuilding God's house together.",
   bodyAm:
-    "የነህምያ ምዕራፍ 3 አንድ ኃይለኛ እውነትን ይገልጻል። ግድግዳው በቤተሰቦች፣ በካህናታትና በመሪዎች በክፍል በክፍል ተሰራ። ምንም አንድ ሰው ብቻውን ሸክሙን አልሸከመም — ሥራው ለሁሉም ማህበረሰብ ነበር። ዘመቻችንም ያንን ቅኝት ይከተላል። 1,000 ተሳታፊዎች እያንዳንዱ 50,000 ብር ሲሰጡ አንድ ለአንድ የእግዚአብሔር ቤትን የምንሰራበት ኃይል እንሆናለን።",
+    "የነህምያ ምዕራፍ 3 አንድ ታላቅ እውነትን ይገልጻል። የከተማዋ ቅጥር በቤተሰቦች፣ በካህናትና በመሪዎች በየክፍሉ ተከፋፍሎ ተሠራ። ማንም ሰው ብቻውን ሸክሙን አልተሸከመም፤ ይልቁንም ሥራው የመላው ማህበረሰብ ነበር። የእኛም ዘመቻ ያንን መርህ ይከተላል። 1,000 ተሳታፊዎች እያንዳንዳቸው 50,000 ብር ሲያበረክቱ፣ እጅ ለእጅ ተያይዘን የእግዚአብሔርን ቤት የምንገነባበት ታላቅ ኃይል እንሆናለን።",
 };
 
 export const THE_MATH = {
@@ -85,7 +85,7 @@ export const PARTICIPATE = {
   optionTwoBodyEn:
     "Partner as a group and give 2, 3, or more contributions in one gift (100,000 ETB, 150,000 ETB, and so on).",
   optionTwoBodyAm:
-    "እንደ ጋራ ተሳታፊዎች 2፣ 3 ወይም ከዚያ በላይ ስጦታዎችን በአንድ መስጠት ይሰጡ (100,000 ብር፣ 150,000 ብር እና ሌሎችም)።",
+    "በጋራ ወይም በተናጠል ሁለት፣ ሦስት ወይም ከዚያ በላይ የሆኑ ዕጣዎችን (ዕድሎችን) በአንድ ላይ ማበርከት ይችላሉ (ለምሳሌ፦ 100,000 ብር፣ 150,000 ብር እና ከዚያ በላይ)።",
 };
 
 export const DONATION_CTA = {
