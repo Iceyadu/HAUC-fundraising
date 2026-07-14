@@ -16,7 +16,7 @@ export const CONTRIBUTOR_COUNT = 0;
 
 export const CONTACT = {
   email: "info@halwotemmanuel.org",
-  phone: "+251 11 000 0000",
+  phone: "+251973422024",
   address: "Addis Ababa, Ethiopia",
 };
 
