@@ -1,6 +1,6 @@
 const IMAGE_EXTENSIONS = new Set(["jpg", "jpeg", "png"]);
 const MAX_DIMENSION = 1600;
-const MAX_OUTPUT_BYTES = 5 * 1024 * 1024;
+const MAX_OUTPUT_BYTES = 2 * 1024 * 1024;
 const COMPRESS_IF_LARGER_THAN_BYTES = 400 * 1024;
 const INITIAL_QUALITY = 0.82;
 const MIN_QUALITY = 0.5;
@@ -92,7 +92,7 @@ export async function compressReceiptImage(file: File): Promise<File> {
 
   if (compressedBlob.size > MAX_OUTPUT_BYTES) {
     throw new Error(
-      "Receipt image is still too large after compression. Please choose a smaller photo.",
+      "Receipt image is still too large after compression. Please choose a smaller photo under 2 MB.",
     );
   }
 

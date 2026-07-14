@@ -8,7 +8,6 @@ const MIME_BY_EXTENSION: Record<string, string> = {
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
   png: "image/png",
-  pdf: "application/pdf",
 };
 
 export { validateReceiptFile } from "@/lib/receipt-validation";
@@ -36,6 +35,11 @@ export async function uploadReceipt(file: File): Promise<string> {
   }
 
   const extension = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+
+  if (!MIME_BY_EXTENSION[extension]) {
+    throw new Error("Receipt must be a JPG or PNG image");
+  }
+
   const receiptPath = buildReceiptPath(extension);
   const objectPath = getStorageObjectPath(receiptPath);
   const contentType = MIME_BY_EXTENSION[extension] ?? "application/octet-stream";

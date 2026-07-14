@@ -313,7 +313,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
               <Input
                 ref={receiptInputRef}
                 type="file"
-                accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+                accept=".jpg,.jpeg,.png,image/jpeg,image/png"
                 disabled={isSubmitting}
                 aria-invalid={Boolean(receiptError)}
                 className={cn(
@@ -326,7 +326,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
           </FormControl>
           <FormDescription className="flex items-center gap-1.5">
             <Upload className="size-3.5" />
-            JPG, PNG, or PDF up to 5 MB. Large photos are compressed automatically.
+            JPG or PNG image only, up to 2 MB.
           </FormDescription>
           {receiptError ? (
             <p className="text-destructive text-sm">{receiptError}</p>
