@@ -4,15 +4,15 @@ export const CHURCH_LOGO = "/church-logo.png";
 export const CHURCH_LOGO_ALT = `${CHURCH_NAME} logo`;
 export const CAMPAIGN_TITLE = "52-Day Building Campaign";
 export const CAMPAIGN_PURPOSE = "Church Building Project";
-export const FIXED_CONTRIBUTION_ETB = 52_000;
+export const FIXED_CONTRIBUTION_ETB = 50_000;
 
 export const BUILDING_PROJECT_IMAGE = "/church-building-project.png";
 export const BUILDING_PROJECT_ALT =
   "Architectural rendering of the new Halwot Emmanuel United Church building";
 
-export const CAMPAIGN_GOAL_ETB = 52_000_000;
-export const AMOUNT_RAISED_ETB = 10_920_000;
-export const CONTRIBUTOR_COUNT = 210;
+export const CAMPAIGN_GOAL_ETB = 50_000_000;
+export const AMOUNT_RAISED_ETB = 0;
+export const CONTRIBUTOR_COUNT = 0;
 
 export const CONTACT = {
   email: "info@halwotemmanuel.org",

@@ -1,5 +1,6 @@
 import { ArrowRight, Calendar, Hammer, Users2 } from "lucide-react";
 
+import { CampaignCountdown } from "@/components/home/campaign-countdown";
 import { CampaignProgress } from "@/components/home/campaign-progress";
 import { BuildingProjectImage } from "@/components/shared/building-project-image";
 import {
@@ -60,6 +61,8 @@ export default function HomePage() {
                 {HERO.subtitleAm}
               </p>
             </div>
+
+            <CampaignCountdown />
 
             <Card className="mt-10 w-full max-w-3xl border-0 shadow-md">
               <CardContent className="p-8 md:p-10">

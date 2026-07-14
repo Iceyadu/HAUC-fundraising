@@ -6,6 +6,7 @@ import {
 } from "date-fns";
 
 import { CAMPAIGN_GOAL_ETB } from "@/lib/branding";
+import { getContributionUnitsFromAmount } from "@/lib/contribution";
 import { normalizePaymentMethodForStorage } from "@/lib/payment-methods";
 import { getReceiptSignedUrl } from "@/lib/receipts";
 import { createServiceClient } from "@/lib/supabase/admin";
@@ -286,20 +287,25 @@ export async function getAdminDashboardStats(): Promise<AdminDashboardStats> {
   const todayTotal = donations
     .filter((donation) => donation.created_at >= todayStart)
     .reduce((sum, donation) => sum + toNumber(donation.amount), 0);
-  const builderKeys = new Set(
-    verifiedDonations.map((donation) => donation.phone || donation.email),
+  const verifiedRaised = verifiedDonations.reduce(
+    (sum, donation) => sum + toNumber(donation.amount),
+    0,
+  );
+  const participantUnits = verifiedDonations.reduce(
+    (sum, donation) => sum + getContributionUnitsFromAmount(toNumber(donation.amount)),
+    0,
   );
 
   const campaignGoal = CAMPAIGN_GOAL_ETB;
-  const remainingAmount = Math.max(campaignGoal - totalRaised, 0);
-  const progressPercent = Math.min((totalRaised / campaignGoal) * 100, 100);
+  const remainingAmount = Math.max(campaignGoal - verifiedRaised, 0);
+  const progressPercent = Math.min((verifiedRaised / campaignGoal) * 100, 100);
 
   return {
     totalRaised,
     campaignGoal,
     remainingAmount,
     donationCount: donations.length,
-    builderCount: builderKeys.size,
+    builderCount: participantUnits,
     pendingCount,
     verifiedCount,
     rejectedCount,
@@ -416,4 +422,15 @@ export async function updateDonationStatus(
   }
 
   return mapDonationRow(data as Donation);
+}
+
+export async function getPublicCampaignProgress(): Promise<{
+  progress: number;
+}> {
+  try {
+    const stats = await getAdminDashboardStats();
+    return { progress: stats.progressPercent };
+  } catch {
+    return { progress: 0 };
+  }
 }

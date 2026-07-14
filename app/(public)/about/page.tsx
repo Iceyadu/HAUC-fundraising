@@ -40,9 +40,9 @@ const values = [
     titleEn: "Stewardship",
     titleAm: "አደራ",
     descriptionEn:
-      "Every 52,000 ETB gift is managed with accountability, transparency, and care.",
+      "Every 50,000 ETB gift is managed with accountability, transparency, and care.",
     descriptionAm:
-      "እያንዳንዱ 52,000 ብር መዋጮ በተጠያቂነት፣ በግልጽነትና በጥንቃቄ ይታደጋል።",
+      "እያንዳንዱ 50,000 ብር ስጦታ በተጠያቂነት፣ በግልጽነትና በጥንቃቄ ይታደጋል።",
     icon: Church,
   },
 ];
@@ -60,7 +60,7 @@ export default function AboutPage() {
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               {CAMPAIGN_TAGLINE_EN} Halwot Emmanuel United Church is on a
-              focused 52-day journey to raise 52,000,000 ETB for our new church
+              focused 52-day journey to raise 50,000,000 ETB for our new church
               building.
             </p>
           </div>

@@ -21,7 +21,7 @@ export function Footer() {
             <Logo />
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Together we will build God&apos;s house — a 52-day Nehemiah
-              campaign to raise 52,000,000 ETB for our new church building.
+              campaign to raise 50,000,000 ETB for our new church building.
             </p>
           </div>
 

@@ -1,8 +1,8 @@
-import { getCampaignProgress } from "@/lib/branding";
+import { getPublicCampaignProgress } from "@/lib/donations";
 import { PROGRESS } from "@/lib/campaign-content";
 
-export function CampaignProgress() {
-  const { progress } = getCampaignProgress();
+export async function CampaignProgress() {
+  const { progress } = await getPublicCampaignProgress();
 
   return (
     <div className="space-y-4">

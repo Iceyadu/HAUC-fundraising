@@ -6,9 +6,14 @@ import { z } from "zod";
 
 import {
   CAMPAIGN_PURPOSE,
-  FIXED_CONTRIBUTION_ETB,
   PAYMENT_METHODS,
 } from "@/lib/branding";
+import {
+  calculateContributionAmount,
+  isValidContributionUnits,
+  MAX_CONTRIBUTION_UNITS,
+  MIN_CONTRIBUTION_UNITS,
+} from "@/lib/contribution";
 import { createDonation } from "@/lib/donations";
 import { phoneNumberSchema } from "@/lib/phone-validation";
 import { uploadReceipt, validateReceiptFile } from "@/lib/receipts";
@@ -25,7 +30,11 @@ const donationSchema = z.object({
     .optional()
     .or(z.literal("")),
   paymentMethod: z.enum(paymentMethodValues as [string, ...string[]]),
-  purpose: z.literal(CAMPAIGN_PURPOSE),
+  contributionUnits: z.coerce
+    .number()
+    .int()
+    .min(MIN_CONTRIBUTION_UNITS, "Select at least one contribution")
+    .max(MAX_CONTRIBUTION_UNITS, `Maximum ${MAX_CONTRIBUTION_UNITS} contributions per submission`),
   message: z.string().max(500).optional(),
   campaignId: z.string().optional(),
 });
@@ -75,7 +84,7 @@ export async function submitDonation(
     donorPhone: formData.get("donorPhone"),
     donorEmail: formData.get("donorEmail") || "",
     paymentMethod: formData.get("paymentMethod"),
-    purpose: formData.get("purpose") || CAMPAIGN_PURPOSE,
+    contributionUnits: formData.get("contributionUnits"),
     message: formData.get("message") || undefined,
     campaignId: formData.get("campaignId") || undefined,
   });
@@ -85,6 +94,16 @@ export async function submitDonation(
       success: false,
       message: "Please fix the highlighted fields.",
       fieldErrors: parsed.error.flatten().fieldErrors,
+    };
+  }
+
+  if (!isValidContributionUnits(parsed.data.contributionUnits)) {
+    return {
+      success: false,
+      message: "Please fix the highlighted fields.",
+      fieldErrors: {
+        contributionUnits: ["Select a valid number of contributions"],
+      },
     };
   }
 
@@ -116,12 +135,13 @@ export async function submitDonation(
 
   try {
     const receiptPath = await uploadReceipt(receiptFile);
+    const amount = calculateContributionAmount(parsed.data.contributionUnits);
 
     const donation = await createDonation({
       donorName: parsed.data.donorName,
       donorPhone: parsed.data.donorPhone,
       donorEmail: parsed.data.donorEmail || "",
-      amount: FIXED_CONTRIBUTION_ETB,
+      amount,
       paymentMethod: parsed.data.paymentMethod,
       purpose: CAMPAIGN_PURPOSE,
       receiptPath,
@@ -137,6 +157,7 @@ export async function submitDonation(
       }
     }
 
+    revalidatePath("/");
     revalidatePath("/admin/dashboard");
     revalidatePath("/admin/donations");
     revalidatePath("/admin/donors");

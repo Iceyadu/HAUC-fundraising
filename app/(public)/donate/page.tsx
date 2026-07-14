@@ -1,10 +1,10 @@
+import { BankAccountInfo } from "@/components/donate/bank-account-info";
 import { DonationForm } from "@/components/donate/donation-form";
 import { BilingualHeading } from "@/components/shared/bilingual-text";
 import { Container } from "@/components/shared/container";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -37,17 +37,19 @@ export default async function DonatePage() {
         </p>
       </div>
 
-      <Card className="mx-auto mt-12 max-w-xl border-0 shadow-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{DONATION_PAGE.formTitleEn}</CardTitle>
-          <p className="text-primary text-lg font-medium">{DONATION_PAGE.formTitleAm}</p>
-          <CardDescription>{DONATION_PAGE.formDescriptionEn}</CardDescription>
-          <p className="text-muted-foreground text-sm">{DONATION_PAGE.formDescriptionAm}</p>
-        </CardHeader>
-        <CardContent>
-          <DonationForm campaigns={campaigns} />
-        </CardContent>
-      </Card>
+      <div className="mx-auto mt-6 max-w-xl space-y-4">
+        <BankAccountInfo />
+
+        <Card className="border-0 shadow-md">
+          <CardHeader className="space-y-1 px-5 pt-5 pb-0 text-center">
+            <CardTitle className="text-xl">{DONATION_PAGE.formTitleEn}</CardTitle>
+            <p className="text-primary text-sm font-medium">{DONATION_PAGE.formTitleAm}</p>
+          </CardHeader>
+          <CardContent className="px-5 pt-4 pb-5">
+            <DonationForm campaigns={campaigns} />
+          </CardContent>
+        </Card>
+      </div>
     </Container>
   );
 }

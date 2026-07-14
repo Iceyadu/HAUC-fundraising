@@ -19,6 +19,7 @@ export async function updateDonationStatusAction(
     await requireAuth();
     await updateDonationStatus(id, status);
 
+    revalidatePath("/");
     revalidatePath("/admin/dashboard");
     revalidatePath("/admin/donations");
     revalidatePath("/admin/donors");

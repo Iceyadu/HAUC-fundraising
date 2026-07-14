@@ -14,6 +14,26 @@ export const CAMPAIGN_END = {
   am: "ነሐሴ 30",
 };
 
+/** Campaign ends at the end of this day (East Africa Time). */
+export const CAMPAIGN_END_AT = "2026-09-05T23:59:59+03:00";
+
+export const COUNTDOWN = {
+  titleEn: "Time Remaining",
+  titleAm: "የቀረው ጊዜ",
+  daysEn: "Days",
+  daysAm: "ቀናት",
+  hoursEn: "Hours",
+  hoursAm: "ሰዓታት",
+  minutesEn: "Minutes",
+  minutesAm: "ደቂቃዎች",
+  secondsEn: "Seconds",
+  secondsAm: "ሰከንዶች",
+  untilEn: "until the campaign ends",
+  untilAm: "ዘመቻው እስከመጨረሻው",
+  endedEn: "Campaign Complete",
+  endedAm: "ዘመቻው ተጠናቋል",
+};
+
 export const HERO = {
   titleEn: "Rise Up and Build",
   titleAm: "እንነሳና እንሥራ!",
@@ -29,9 +49,9 @@ export const VISION_GOAL = {
   titleEn: "The Vision & The Goal",
   titleAm: "ራዕይና ግቡ",
   bodyEn:
-    "In the days of Nehemiah, the broken walls were completely rebuilt in just 52 days (Nehemiah 6:15). Following that same pattern of focus and dedication, we are launching a 52-day campaign to raise 52,000,000 ETB.",
+    "In the days of Nehemiah, the broken walls were completely rebuilt in just 52 days (Nehemiah 6:15). Following that same pattern of focus and dedication, we are launching a 52-day campaign to raise 50,000,000 ETB.",
   bodyAm:
-    "በነህምያ ዘመን የፈረሱት የቅጥሩ ሥራዎች በ52 ቀናት ብቻ ተጠናቀቁ (ነህምያ 6፥15)። ያንን ያተኮረና የተሰጠ የሥራ ቅኝት በመከተል 52,000,000 ብር ለማሰባሰብ ለ52 ቀናት የሚቆይ ታላቅ ዘመቻ ጀምረናል።",
+    "በነህምያ ዘመን የፈረሱት የቅጥሩ ሥራዎች በ52 ቀናት ብቻ ተጠናቀቁ (ነህምያ 6፥15)። ያንን ያተኮረና የተሰጠ የሥራ ቅኝት በመከተል 50,000,000 ብር ለማሰባሰብ ለ52 ቀናት የሚቆይ ታላቅ ዘመቻ ጀምረናል።",
 };
 
 export const POWER_IN_NUMBERS = {
@@ -40,15 +60,15 @@ export const POWER_IN_NUMBERS = {
   subtitleEn: "The 1,000 People Principle",
   subtitleAm: "የ1000 ሰዎች መርህ",
   bodyEn:
-    "Nehemiah chapter 3 reveals a powerful truth: the wall was rebuilt section by section, as families, priests, craftsmen, and leaders each took responsibility for their portion. No one carried the burden alone — the work belonged to the whole community. Our campaign follows that same pattern. When 1,000 participants each contribute 52,000 ETB, we become one united force rebuilding God's house together.",
+    "Nehemiah chapter 3 reveals a powerful truth: the wall was rebuilt section by section, as families, priests, craftsmen, and leaders each took responsibility for their portion. No one carried the burden alone — the work belonged to the whole community. Our campaign follows that same pattern. When 1,000 participants each contribute 50,000 ETB, we become one united force rebuilding God's house together.",
   bodyAm:
-    "የነህምያ ምዕራፍ 3 አንድ ኃይለኛ እውነትን ይገልጻል። ግድግዳው በቤተሰቦች፣ በካህናታትና በመሪዎች በክፍል በክፍል ተሰራ። ምንም አንድ ሰው ብቻውን ሸክሙን አልሸከመም — ሥራው ለሁሉም ማህበረሰብ ነበር። ዘመቻችንም ያንን ቅኝት ይከተላል። 1,000 ተሳታፊዎች እያንዳንዱ 52,000 ብር ሲሰጡ አንድ ለአንድ የእግዚአብሔር ቤትን የምንሰራበት ኃይል እንሆናለን።",
+    "የነህምያ ምዕራፍ 3 አንድ ኃይለኛ እውነትን ይገልጻል። ግድግዳው በቤተሰቦች፣ በካህናታትና በመሪዎች በክፍል በክፍል ተሰራ። ምንም አንድ ሰው ብቻውን ሸክሙን አልሸከመም — ሥራው ለሁሉም ማህበረሰብ ነበር። ዘመቻችንም ያንን ቅኝት ይከተላል። 1,000 ተሳታፊዎች እያንዳንዱ 50,000 ብር ሲሰጡ አንድ ለአንድ የእግዚአብሔር ቤትን የምንሰራበት ኃይል እንሆናለን።",
 };
 
 export const THE_MATH = {
-  total: "52,000,000 ETB",
+  total: "50,000,000 ETB",
   people: "1,000 People",
-  each: "52,000 ETB",
+  each: "50,000 ETB",
   taglineEn: "Every participant makes the vision possible.",
   taglineAm: "እያንዳንዱ ተሳታፊ ራዕዩን የሚያስቻል ነው።",
 };
@@ -58,14 +78,14 @@ export const PARTICIPATE = {
   titleAm: "እንዴት መሳተፍ እንደሚችሉ",
   optionOneTitleEn: "Individual Participant",
   optionOneTitleAm: "የግል ተሳታፊ",
-  optionOneBodyEn: "Sponsor the full 52,000 ETB.",
-  optionOneBodyAm: "ሙሉውን 52,000 ብር ይሸፍኑ።",
+  optionOneBodyEn: "Sponsor the full 50,000 ETB.",
+  optionOneBodyAm: "ሙሉውን 50,000 ብር ይሸፍኑ።",
   optionTwoTitleEn: "Group Participant",
   optionTwoTitleAm: "የጋራ ተሳታፊዎች",
   optionTwoBodyEn:
-    "Partner with a spiritual brother, sister or friend to contribute together.",
+    "Partner as a group and give 2, 3, or more contributions in one gift (100,000 ETB, 150,000 ETB, and so on).",
   optionTwoBodyAm:
-    "ከመንፈሳዊ ወንድም፣ እህት ወይም ጓደኛ ጋር በመተባበር አብረው ይሰጡ።",
+    "እንደ ጋራ ተሳታፊዎች 2፣ 3 ወይም ከዚያ በላይ ስጦታዎችን በአንድ መስጠት ይሰጡ (100,000 ብር፣ 150,000 ብር እና ሌሎችም)።",
 };
 
 export const DONATION_CTA = {
@@ -83,14 +103,14 @@ export const DONATION_PAGE = {
   subtitleAm: "በ52 ቀናት ዘመቻ በእምነት መስጠት የእግዚአብሔር ቤትን ለመገንባት ይቀላቀሉ።",
   cardTitleEn: "One Participant · One Legacy",
   cardTitleAm: "አንድ ተሳታፊ · አንድ ቅርስ",
-  cardSubtitleEn: "Fixed contribution for every participant in the campaign.",
-  cardSubtitleAm: "ለዘመቻው ውስጥ ለእያንዳንዱ ተሳታፊ የተወሰነ መዋጮ ነው።",
+  cardSubtitleEn: "Each unit is 50,000 ETB. Choose 1, 2, 3, or more contributions in one gift.",
+  cardSubtitleAm: "እያንዳንዱ ስጦታ 50,000 ብር ነው። 1፣ 2፣ 3 ወይም ከዚያ በላይ በአንድ መስጠት መምረጥ ይቻላል።",
   formTitleEn: "Participant Contribution Form",
-  formTitleAm: "የተሳታፊ መዋጮ ቅጽ",
+  formTitleAm: "የተሳታፊ ስጦታ ቅጽ",
   formDescriptionEn:
     "Record your gift as one of the 1,000 participants in this 52-day campaign.",
   formDescriptionAm:
-    "መዋጮዎን እንደ ከ1,000 ተሳታፊዎች አንዱ በዚህ 52 ቀናት ዘመቻ ያስመዝግቡ።",
+    "ስጦታዎን እንደ ከ1,000 ተሳታፊዎች አንዱ በዚህ 52 ቀናት ዘመቻ ያስመዝግቡ።",
 };
 
 export const PROGRESS = {

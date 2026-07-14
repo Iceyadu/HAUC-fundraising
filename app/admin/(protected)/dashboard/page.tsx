@@ -72,7 +72,7 @@ export default async function AdminDashboardPage() {
     {
       title: "Number of Participants",
       value: stats.builderCount.toString(),
-      description: "Verified unique contributors",
+      description: "Verified contribution units (50,000 ETB each)",
       icon: Users,
     },
     {

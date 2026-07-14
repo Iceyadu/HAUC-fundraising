@@ -31,12 +31,14 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  CAMPAIGN_PURPOSE,
   FIXED_CONTRIBUTION_ETB,
   formatEtb,
   PAYMENT_METHODS,
 } from "@/lib/branding";
-import { DONATION_PAGE } from "@/lib/campaign-content";
+import {
+  calculateContributionAmount,
+  CONTRIBUTION_UNIT_OPTIONS,
+} from "@/lib/contribution";
 import { compressReceiptImage } from "@/lib/receipt-compression";
 import { phoneNumberSchema } from "@/lib/phone-validation";
 import { validateReceiptFile } from "@/lib/receipt-validation";
@@ -52,7 +54,7 @@ const donationFormSchema = z.object({
     .optional()
     .or(z.literal("")),
   paymentMethod: z.string().min(1, "Select a payment method"),
-  purpose: z.string(),
+  contributionUnits: z.number().int().min(1).max(20),
   message: z.string().max(500).optional(),
 });
 
@@ -73,10 +75,13 @@ export function DonationForm({ campaigns }: DonationFormProps) {
       donorPhone: "",
       donorEmail: "",
       paymentMethod: "",
-      purpose: CAMPAIGN_PURPOSE,
+      contributionUnits: 1,
       message: "",
     },
   });
+
+  const contributionUnits = form.watch("contributionUnits");
+  const totalAmount = calculateContributionAmount(contributionUnits);
 
   const isSubmitting = form.formState.isSubmitting;
   const [isCompressing, setIsCompressing] = useState(false);
@@ -121,7 +126,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
     formData.set("donorPhone", values.donorPhone);
     formData.set("donorEmail", values.donorEmail ?? "");
     formData.set("paymentMethod", values.paymentMethod);
-    formData.set("purpose", CAMPAIGN_PURPOSE);
+    formData.set("contributionUnits", String(values.contributionUnits));
 
     if (campaigns[0]?.id) {
       formData.set("campaignId", campaigns[0].id);
@@ -166,30 +171,49 @@ export function DonationForm({ campaigns }: DonationFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormItem>
-          <FormLabel>Campaign Contribution</FormLabel>
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-8 text-center">
-            <p className="text-primary text-4xl font-bold md:text-5xl">
-              {formatEtb(FIXED_CONTRIBUTION_ETB)}
-            </p>
-            <div className="mt-4 space-y-1">
-              <p className="text-lg font-semibold">{DONATION_PAGE.cardTitleEn}</p>
-              <p className="text-primary font-medium">{DONATION_PAGE.cardTitleAm}</p>
-            </div>
-            <div className="mt-4 space-y-1">
-              <p className="text-muted-foreground text-sm">
-                {DONATION_PAGE.cardSubtitleEn}
-              </p>
-              <p className="text-muted-foreground text-sm">
-                {DONATION_PAGE.cardSubtitleAm}
-              </p>
-            </div>
-          </div>
-          <FormDescription>
-            Fixed contribution amount for every participant.
-          </FormDescription>
-        </FormItem>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <FormField
+          control={form.control}
+          name="contributionUnits"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Number of Contributions <span className="text-destructive">*</span>
+              </FormLabel>
+              <Select
+                value={String(field.value)}
+                onValueChange={(value) => field.onChange(Number(value))}
+                disabled={isSubmitting || isCompressing}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select number of contributions" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {CONTRIBUTION_UNIT_OPTIONS.map((units) => (
+                    <SelectItem key={units} value={String(units)}>
+                      {units} × {formatEtb(FIXED_CONTRIBUTION_ETB)} ={" "}
+                      {formatEtb(calculateContributionAmount(units))}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <div className="bg-primary/5 flex items-center justify-between rounded-lg border border-primary/15 px-3 py-2.5">
+                <span className="text-muted-foreground text-sm">Total</span>
+                <div className="text-right">
+                  <p className="text-primary text-xl font-bold leading-none">
+                    {formatEtb(totalAmount)}
+                  </p>
+                  <p className="text-muted-foreground mt-1 text-xs">
+                    {contributionUnits} × {formatEtb(FIXED_CONTRIBUTION_ETB)}
+                  </p>
+                </div>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
@@ -263,16 +287,16 @@ export function DonationForm({ campaigns }: DonationFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                Bank / Payment Method <span className="text-destructive">*</span>
+                Bank Account Used <span className="text-destructive">*</span>
               </FormLabel>
               <Select
                 value={field.value}
                 onValueChange={field.onChange}
-                disabled={isSubmitting}
+                disabled={isSubmitting || isCompressing}
               >
                 <FormControl>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select bank or payment method" />
+                    <SelectValue placeholder="Select the account you paid into" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="max-h-72">
@@ -283,23 +307,10 @@ export function DonationForm({ campaigns }: DonationFormProps) {
                   ))}
                 </SelectContent>
               </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="purpose"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Purpose</FormLabel>
-              <FormControl>
-                <Input readOnly disabled {...field} />
-              </FormControl>
               <FormDescription>
-                All contributions support the new church building project.
+                Choose the exact church account that received your transfer.
               </FormDescription>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -314,7 +325,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
                 ref={receiptInputRef}
                 type="file"
                 accept=".jpg,.jpeg,.png,image/jpeg,image/png"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isCompressing}
                 aria-invalid={Boolean(receiptError)}
                 className={cn(
                   "cursor-pointer file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1 file:text-sm file:font-medium file:text-primary-foreground",
@@ -369,7 +380,7 @@ export function DonationForm({ campaigns }: DonationFormProps) {
               Submitting...
             </>
           ) : (
-            "Submit Contribution"
+            `Submit ${formatEtb(totalAmount)} Contribution`
           )}
         </Button>
       </form>

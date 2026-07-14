@@ -1,4 +1,5 @@
 import { formatEtb, getPaymentMethodLabel } from "@/lib/branding";
+import { getContributionUnitsFromAmount } from "@/lib/contribution";
 import { getReceiptSignedUrl } from "@/lib/receipts";
 import type { Donation } from "@/types/donation";
 
@@ -43,8 +44,11 @@ function buildDonationMessage(donation: Donation): string {
     lines.push(`<b>Email:</b> ${escapeHtml(donation.email)}`);
   }
 
+  const units = getContributionUnitsFromAmount(donation.amount);
+
   lines.push(
     `<b>Amount:</b> ${escapeHtml(formatEtb(donation.amount))}`,
+    `<b>Contributions:</b> ${units} × ${escapeHtml(formatEtb(donation.amount / units))}`,
     `<b>Payment:</b> ${escapeHtml(getPaymentMethodLabel(donation.payment_method))}`,
     `<b>Purpose:</b> ${escapeHtml(donation.purpose ?? "Church Building Project")}`,
     `<b>Status:</b> ${escapeHtml(donation.status)}`,
