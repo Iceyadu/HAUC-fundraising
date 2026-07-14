@@ -20,7 +20,7 @@ export function BankAccountInfo() {
       <ul className="grid gap-1.5 sm:grid-cols-2">
         {CHURCH_BANK_ACCOUNTS.map((account) => (
           <li
-            key={account.value}
+            key={account.id}
             className="bg-background rounded-md border px-2.5 py-2 text-left text-xs leading-snug"
           >
             <p className="font-medium">{account.bankName}</p>
