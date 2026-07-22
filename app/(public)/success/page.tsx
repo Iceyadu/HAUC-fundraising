@@ -21,7 +21,7 @@ export default function SuccessPage() {
               Thank You
             </h1>
             <p className="text-primary text-xl font-semibold md:text-2xl">
-              አመሰግናለሁ
+              እናመስግናለን
             </p>
           </div>
 
