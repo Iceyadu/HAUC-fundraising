@@ -12,10 +12,11 @@ import {
 } from "lucide-react";
 
 import { StatCard } from "@/components/admin/stat-card";
+import { DonationActivityChart } from "@/components/admin/donation-activity-chart";
 import { ExportPdfButton } from "@/components/admin/export-pdf-button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CAMPAIGN_TITLE, formatEtb } from "@/lib/branding";
-import { getAdminDashboardStats, getRecentDonations } from "@/lib/donations";
+import { getAdminDashboardStats, getDonationActivitySummary, getRecentDonations } from "@/lib/donations";
 import { StatusBadge } from "@/components/admin/status-badge";
 
 export default async function AdminDashboardPage() {
@@ -34,11 +35,18 @@ export default async function AdminDashboardPage() {
     progressPercent: 0,
   };
   let recentDonations: Awaited<ReturnType<typeof getRecentDonations>> = [];
+  let activity: Awaited<ReturnType<typeof getDonationActivitySummary>> = {
+    daily: [],
+    weekly: [],
+    peakDay: null,
+    peakWeek: null,
+  };
 
   try {
-    [stats, recentDonations] = await Promise.all([
+    [stats, recentDonations, activity] = await Promise.all([
       getAdminDashboardStats(),
       getRecentDonations(6),
+      getDonationActivitySummary(),
     ]);
   } catch {
     // Database may not be configured yet.
@@ -116,6 +124,8 @@ export default async function AdminDashboardPage() {
           filename="campaign-progress.pdf"
         />
       </div>
+
+      <DonationActivityChart activity={activity} />
 
       <Card className="border-0 shadow-md">
         <CardHeader>

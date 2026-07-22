@@ -46,6 +46,21 @@ export interface AdminDashboardStats {
   progressPercent: number;
 }
 
+export interface DonationActivityBucket {
+  key: string;
+  label: string;
+  shortLabel: string;
+  amount: number;
+  count: number;
+}
+
+export interface DonationActivitySummary {
+  daily: DonationActivityBucket[];
+  weekly: DonationActivityBucket[];
+  peakDay: DonationActivityBucket | null;
+  peakWeek: DonationActivityBucket | null;
+}
+
 export interface DonationWithReceipt extends Donation {
   receipt_signed_url: string | null;
 }

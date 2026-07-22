@@ -6,6 +6,7 @@ import {
 } from "date-fns";
 
 import { CAMPAIGN_GOAL_ETB } from "@/lib/branding";
+import { buildDonationActivitySummary } from "@/lib/donation-activity";
 import { getContributionUnitsFromAmount } from "@/lib/contribution";
 import { normalizePaymentMethodForStorage } from "@/lib/payment-methods";
 import { getReceiptSignedUrl } from "@/lib/receipts";
@@ -16,6 +17,7 @@ import type {
   Campaign,
   DashboardStats,
   Donation,
+  DonationActivitySummary,
   DonationQueryParams,
   DonationStatus,
   DonationWithReceipt,
@@ -422,6 +424,19 @@ export async function updateDonationStatus(
   }
 
   return mapDonationRow(data as Donation);
+}
+
+export async function getDonationActivitySummary(): Promise<DonationActivitySummary> {
+  const supabase = createServiceClient();
+  const { data, error } = await supabase
+    .from("donations")
+    .select("amount, status, created_at");
+
+  if (error) {
+    throwSupabaseError("Donation activity query", error, "DATABASE_QUERY_FAILED");
+  }
+
+  return buildDonationActivitySummary(data ?? []);
 }
 
 export async function getPublicCampaignProgress(): Promise<{
